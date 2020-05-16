@@ -11,7 +11,7 @@ Due to limitation of computing power, I've decided to train 1000 images with 68 
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/resnet_densenet_arch.png)
 Incentivized by this paper by Valev et al. on [A Systematic Evaluation of Recent Deep Learning Architectures for Fine-Grained Vehicle Classification](https://arxiv.org/abs/1806.02987), I decided to implement Densenet 121 as my base model. Densenet builds on **ResNet** (*left image above*), which tries to mitigate the problem of vanishing gradient by adding an identity shortcut to the next layer. The addition of such shortcut performs elementwise addition and allows gradient to skip over intermediate layers and backprogate without being largely diminished. **DenseNet** (*right image above*) follows such idea by densely connecting every layer to every other layer inside a block, and replacing the elementwise addition with concatenation to preserve information. This is particularly important for image classification tasks like this, because we don't want to lose too many image details over the course of the whole CNN network. Such concatenation also reduces the number of parameters needed to train and largely improves the computation complexity. I chose the best performing DenseNet model available on Keras (**DenseNet 121**) and used transfer learning with pre-trained ImageNet weights. 
 
-### Attempt 1: Base Model
+### 1. Base Model:
 My first attempt was to use DenseNet 121 model directly with pre-trained ImageNet weights. 
 For data preprocessing, I squared the images with 0 paddings and resized them down to equal sizes. I then added a fully connected layer with ReLU activation and dropout. 
 
@@ -31,9 +31,9 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.775\
 Validation accuracy: 1.000\
-Testing accuracy: 0.782\
+Testing accuracy: 0.782
 
-### Attempt 2: Data Augmentation
+### 2. Data Augmentation:
 To improve the base model, I augmentated the data to include rotated and flipped image, since our model should only be focused on features like shapes, each part's relative position, colors etc., instead of its absolution position in the image. 
 
 Accuracy                   |  Loss
@@ -42,9 +42,9 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.999\
 Validation accuracy: 0.780\
-Testing accuracy: 0.724\
+Testing accuracy: 0.724
 
-### Attempt 3: Image Cropping
+### 3. Image Cropping:
 After exploring the misclassified car images, I found that car images with a relatively clear background tend to have higher classification accuracy than those with more background noise. Thus, I tried cropping the images based on the bounding boxes given in the dataset. (Note: There are multiple available bounding box algorithms, including YOLO.) The images are cropped and padded, and then fed into the same network as described above (with data augmentation). 
 
 Accuracy                   |  Loss
@@ -53,7 +53,7 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.800\
 Validation accuracy: 0.990\
-Testing accuracy: 0.814\
+Testing accuracy: 0.814
 
 ## Results: 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix below:
