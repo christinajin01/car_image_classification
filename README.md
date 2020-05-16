@@ -53,7 +53,7 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.990\
 Validation accuracy: 0.800\
-Testing accuracy: 0.756
+Testing accuracy: 0.814
 
 ## Results: 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix below:
