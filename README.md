@@ -69,7 +69,7 @@ Testing accuracy: 0.827
 
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/cm_5000.png)
 
-We see that the current architecture is able to perform decently well with larger variety of model classes. 
+We see that the current architecture is able to perform decently well even with a larger variety of model classes. 
 
 ## Limitations & Future work:
 ### 1. Size of dataset:
