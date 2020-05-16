@@ -62,16 +62,18 @@ To see a detailed breakdown of how well the model performed, I plotted the confu
 
 As seen from the matrix plot, Audi Q3 has the lowest recall, whereas Audi Q5 has the highest. 
 
-I've trained this model on a larger dataset with 2,000 train images and 127 model classes, with accuracy and confusion matrix reported below:\
-Training accuracy: 0.999\
-Validation accuracy: 0.768\
-Testing accuracy: 0.794
+I've trained this model on a larger dataset with 5,000 train images and 73 model classes, with accuracy and confusion matrix reported below:\
+Training accuracy: 0.9995\
+Validation accuracy: 0.813\
+Testing accuracy: 0.827
 
-![](https://github.com/christinajin01/car_image_classification/blob/master/plots/cm_2000.png)
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/cm_5000.png)
+
+We see that the current architecture is able to perform decently well with larger variety of model classes. 
 
 ## Limitations & Future work:
 ### 1. Size of dataset:
-The current approach was limited by computing power. As seen from the labels in the confusion matrix, the current model mostly only contained models under Audi. The current model performs well on the labels chosen, but further testing is needed for a greater variety of car models/types of pictures taken to see how well such model generalizes. 
+The current approach was limited by computing power. Although it performed well on the selected labels, further testing is needed for a greater variety of car models/types of pictures taken to see how well such model generalizes. 
 
 ### 2. Bounding box and background removal:
 A bounding box generation pipeline is still needed for future images. One of the most popular framework is YOLO (You Only Look Once), which performs object detection and outputs the bounding box coordinates of the object. Moreover, a background removal (e.g.: Unet) rather than just the bounding box might work even better in removing unnecessary information encoded by the images. 
