@@ -31,7 +31,7 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.775\
 Validation accuracy: 1.000\
-Testing accuracy: 0.782
+Testing accuracy: 0.782\
 
 ### Attempt 2: Data Augmentation
 To improve the base model, I augmentated the data to include rotated and flipped image, since our model should only be focused on features like shapes, each part's relative position, colors etc., instead of its absolution position in the image. 
@@ -42,7 +42,7 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.999\
 Validation accuracy: 0.780\
-Testing accuracy: 0.724
+Testing accuracy: 0.724\
 
 ### Attempt 3: Image Cropping
 After exploring the misclassified car images, I found that car images with a relatively clear background tend to have higher classification accuracy than those with more background noise. Thus, I tried cropping the images based on the bounding boxes given in the dataset. (Note: There are multiple available bounding box algorithms, including YOLO.) The images are cropped and padded, and then fed into the same network as described above (with data augmentation). 
@@ -53,10 +53,9 @@ Accuracy                   |  Loss
 
 Training accuracy: 0.800\
 Validation accuracy: 0.990\
-Testing accuracy: 0.814
+Testing accuracy: 0.814\
 
-## Results: Present your results metrics (confusion matrix, accuracy table, etc.) in an organized manner.
-
+## Results: 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix below:
 
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/confusion_matrix.png)
@@ -64,13 +63,13 @@ To see a detailed breakdown of how well the model performed, I plotted the confu
 As seen from the matrix plot, Audi Q3 has the lowest recall, whereas Audi Q5 has the highest. 
 
 ## Limitations & Future work:
-1. Size of dataset:
+### 1. Size of dataset:
 The current approach was limited by computing power. As seen from the labels in the confusion matrix, the current model mostly only contained models under Audi. The current model performs well on the labels chosen, but further testing is needed for a greater variety of car models/types of pictures taken to see how well such model generalizes. 
 
-2. Bounding box and background removal:
+### 2. Bounding box and background removal:
 A bounding box generation pipeline is still needed for future images. One of the most popular framework is YOLO (You Only Look Once), which performs object detection and outputs the bounding box coordinates of the object. Moreover, a background removal (e.g.: Unet) rather than just the bounding box might work even better in removing unnecessary information encoded by the images. 
 
-3. Shadows and glares:
+### 3. Shadows and glares:
 It's brought to attention that certain images with shadows and glares are relatively harder to classify because such noise contaminates the object directly and is potentially impossible to eliminate just by background removal. To deal with such problem, we can try doing data augmentation by generating similar images using GANs.
 
 ## What have I learned:
