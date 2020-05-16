@@ -34,15 +34,15 @@ Validation accuracy: 0.775\
 Testing accuracy: 0.782
 
 ### 2. Data Augmentation:
-To improve the base model, I augmentated the data to include rotated and flipped image, since our model should only be focused on features like shapes, each part's relative position, colors etc., instead of its absolution position in the image. 
+To improve the base model, I augmentated the data to include rotated and horizontally flipped image, since our model should only be focused on features like shapes, each part's relative position, colors etc., instead of its absolution position in the image. 
 
 Accuracy                   |  Loss
 :-------------------------:|:-------------------------:
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png)
 
-Training accuracy: 0.999\
-Validation accuracy: 0.780\
-Testing accuracy: 0.724
+Training accuracy: 1.000\
+Validation accuracy: 0.790\
+Testing accuracy: 0.786
 
 ### 3. Image Cropping:
 After exploring the misclassified car images, I found that car images with a relatively clear background tend to have higher classification accuracy than those with more background noise. Thus, I tried cropping the images based on the bounding boxes given in the dataset. (Note: There are multiple available bounding box algorithms, including YOLO.) The images are cropped and padded, and then fed into the same network as described above (with data augmentation). 
@@ -51,9 +51,9 @@ Accuracy                   |  Loss
 :-------------------------:|:-------------------------:
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_loss.png)
 
-Training accuracy: 0.990\
-Validation accuracy: 0.800\
-Testing accuracy: 0.814
+Training accuracy: 1.000\
+Validation accuracy: 0.810\
+Testing accuracy: 0.836
 
 ## Results: 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix below:
@@ -61,6 +61,13 @@ To see a detailed breakdown of how well the model performed, I plotted the confu
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/confusion_matrix.png)
 
 As seen from the matrix plot, Audi Q3 has the lowest recall, whereas Audi Q5 has the highest. 
+
+I've trained this model on a larger dataset with 2,000 train images and 127 model classes, with accuracy and confusion matrix reported below:\
+Training accuracy: 0.999\
+Validation accuracy: 0.768\
+Testing accuracy: 0.794
+
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/cm_2000.png)
 
 ## Limitations & Future work:
 ### 1. Size of dataset:

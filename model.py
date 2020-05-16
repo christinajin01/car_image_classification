@@ -135,8 +135,7 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc']
 
 early_stop = EarlyStopping(monitor='val_loss', patience=8, verbose=1, min_delta=1e-4)
 reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=4, verbose=1, min_delta=1e-4)
-img_aug = ImageDataGenerator(rotation_range=5, 
-                             vertical_flip=True, horizontal_flip=True) # brightness_range=[0.5,1.5]
+img_aug = ImageDataGenerator(rotation_range=5, horizontal_flip=True) # brightness_range=[0.5,1.5]
 val_img_aug = ImageDataGenerator()
 model_history = model.fit(img_aug.flow(trainX, trainY, batch_size=30), 
                     epochs=epochs, 
