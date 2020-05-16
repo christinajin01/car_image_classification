@@ -1,5 +1,5 @@
 # Densenet for Fine-Grained Vehicle Image Classification
-*Christina Jin*
+*Christina Jin*\
 *May, 2020*
 
 ## Problem Statement: 
