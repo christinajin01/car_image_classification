@@ -29,8 +29,8 @@ Accuracy                   |  Loss
 :-------------------------:|:-------------------------:
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/base_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/base_mod_loss.png)
 
-Training accuracy: 0.775\
-Validation accuracy: 1.000\
+Training accuracy: 1.000\
+Validation accuracy: 0.775\
 Testing accuracy: 0.782
 
 ### 2. Data Augmentation:
@@ -51,9 +51,9 @@ Accuracy                   |  Loss
 :-------------------------:|:-------------------------:
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_loss.png)
 
-Training accuracy: 0.800\
-Validation accuracy: 0.990\
-Testing accuracy: 0.814
+Training accuracy: 0.990\
+Validation accuracy: 0.800\
+Testing accuracy: 0.756
 
 ## Results: 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix below:
