@@ -17,7 +17,7 @@ Incentivized by this paper by Valev et al. on [A Systematic Evaluation of Recent
 1. My first attempt was to use DenseNet121 model directly with pre-trained ImageNet weights. 
 For data preprocessing, I squared the images with 0 paddings and resized them down to equal sizes. I then added a fully connected layer with ReLU activation and dropout. 
 
-<center>
+
 | Layers  | 
 |:-------------:|
 | DenseNet121 |
@@ -27,7 +27,10 @@ For data preprocessing, I squared the images with 0 paddings and resized them do
 | Activation |
 | Dropout |
 | Dense |
-</center>
+
+Accuracy                   |  Loss
+:-------------------------:|:-------------------------:
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/base_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/base_mod_loss.png)
 
 Training accuracy: 0.775\
 Validation accuracy: 1.000\
@@ -36,12 +39,20 @@ Testing accuracy: 0.782
 2. Data Augmentation (flipping and rotations)
 To improve the base model, I augmentated the data to include rotated and flipped image, since our model should only be focused on features like shapes, each part's relative position, colors etc., instead of its absolution position in the image. 
 
+Accuracy                   |  Loss
+:-------------------------:|:-------------------------:
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png)
+
 Training accuracy: 0.999\
 Validation accuracy: 0.780\
 Testing accuracy: 0.724
 
 3. Image cropping:
 After exploring the misclassified car images, I found that car images with a relatively clear background tend to have higher classification accuracy than those with more background noise. Thus, I tried cropping the images based on the bounding boxes given in the dataset. (Note: There are multiple available bounding box algorithms, including YOLO.) The images are cropped and padded, and then fed into the same network as described above (with data augmentation). 
+
+Accuracy                   |  Loss
+:-------------------------:|:-------------------------:
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_acc.png)  |  ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/final_mod_loss.png)
 
 Training accuracy: 0.800\
 Validation accuracy: 0.990\
@@ -51,12 +62,8 @@ Testing accuracy: 0.814
 
 To see a detailed breakdown of how well the model performed, I plotted the confusion matrix as below:
 
-![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png "Accuracy")
-![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png "Loss")
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/confusion_matrix.png)
 
-Accuracy            |  Loss
-:-------------------------:|:-------------------------:
-![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png)  |  ![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png)
 
 ## Limitations & Future work:
 1. Size of dataset:
