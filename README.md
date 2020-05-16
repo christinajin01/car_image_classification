@@ -54,6 +54,9 @@ To see a detailed breakdown of how well the model performed, I plotted the confu
 ![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png "Accuracy")
 ![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png "Loss")
 
+Accuracy            |  Loss
+:-------------------------:|:-------------------------:
+![](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_acc.png)  |  ![image](https://github.com/christinajin01/car_image_classification/blob/master/plots/aug_mod_loss.png)
 
 ## Limitations & Future work:
 1. Size of dataset:
