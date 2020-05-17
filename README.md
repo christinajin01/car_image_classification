@@ -6,7 +6,7 @@
 This project aims to classify car model names from [the Comprehensive Cars (CompCars) dataset](http://mmlab.ie.cuhk.edu.hk/datasets/comp_cars/index.html). This dataset contains car image data from two scenarios, web-nature and surveillance-nature. Since the purpose of the task aims for higher accuracy, I've decided to use the web-nature data due to its higher resolution and potential of capturing greater details. The web dataset, in particular, contains 86,726 car images and 1,716 car models. 
 
 ## Approaches:
-Due to limitation of computing power, I've decided to train 1000 images with 68 different models and test on 500 images with 23 models.
+Due to limitation of computing power, I've decided to train 1000 images with 18 different car models and test on 500 images with 10 car models.
 
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/resnet_densenet_arch.png)
 Incentivized by this paper by Valev et al. on [A Systematic Evaluation of Recent Deep Learning Architectures for Fine-Grained Vehicle Classification](https://arxiv.org/abs/1806.02987), I decided to implement Densenet 121 as my base model. Densenet builds on **ResNet** (*left image above*), which tries to mitigate the problem of vanishing gradient by adding an identity shortcut to the next layer. The addition of such shortcut performs elementwise addition and allows gradient to skip over intermediate layers and backprogate without being largely diminished. **DenseNet** (*right image above*) follows such idea by densely connecting every layer to every other layer inside a block, and replacing the elementwise addition with concatenation to preserve information. This is particularly important for image classification tasks like this, because we don't want to lose too many image details over the course of the whole CNN network. Such concatenation also reduces the number of parameters needed to train and largely improves the computation complexity. I chose the best performing DenseNet model available on Keras (**DenseNet 121**) and used transfer learning with pre-trained ImageNet weights. 
@@ -62,14 +62,14 @@ To see a detailed breakdown of how well the model performed, I plotted the confu
 
 As seen from the matrix plot, Audi Q3 has the lowest recall, whereas Audi Q5 has the highest. 
 
-I've trained this model on a larger dataset with 5,000 train images and 73 model classes, with accuracy and confusion matrix reported below:\
+I've trained this model on a larger dataset with 5,000 train images and 73 labels, with accuracy and confusion matrix reported below:\
 Training accuracy: 0.9995\
 Validation accuracy: 0.813\
 Testing accuracy: 0.827
 
 ![](https://github.com/christinajin01/car_image_classification/blob/master/plots/cm_5000.png)
 
-We see that the current architecture is able to perform decently well even with a larger variety of model classes. 
+We see that the current architecture is able to perform decently well even with a larger variety of labels. 
 
 ## Limitations & Future work:
 ### 1. Size of dataset:
